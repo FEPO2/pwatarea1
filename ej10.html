@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseño de Página Completa - Ejercicio 10</title>
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+            --accent: #06b6d4;
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Encapoderado / Header */
+        header {
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4c1d95 100%);
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* Barra de Navegación */
+        nav {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 12px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+            background-color: rgba(6, 182, 212, 0.1);
+        }
+
+        /* Estructura Layout (Main + Aside) */
+        .layout-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2.5fr 1fr;
+            gap: 30px;
+            flex: 1;
+        }
+
+        /* Contenido Principal */
+        main {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .card-section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-section h2 {
+            color: var(--accent);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        .card-section p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        /* Barra Lateral (Aside) */
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .widget {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .widget h3 {
+            color: var(--text-main);
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+
+        .widget ul {
+            list-style: none;
+        }
+
+        .widget li {
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .widget li::before {
+            content: "•";
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Pie de Página / Footer */
+        footer {
+            background-color: #090d16;
+            border-top: 1px solid var(--border-color);
+            padding: 25px 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-back:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Responsividad */
+        @media screen and (max-width: 850px) {
+            .layout-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Encabezado -->
+    <header>
+        <h1>Biografía Profesional</h1>
+        <p>Andres Moises Calle Acosta | Portafolio Personal</p>
+    </header>
+
+    <!-- Barra de Navegación -->
+    <nav>
+        <ul>
+            <li><a href="#perfil">Perfil</a></li>
+            <li><a href="#experiencia">Experiencia</a></li>
+            <li><a href="#habilidades">Habilidades</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Layout Principal (Contenido + Barra Lateral) -->
+    <div class="layout-container">
+
+        <!-- Contenido Principal -->
+        <main>
+            <section id="perfil" class="card-section">
+                <h2>Perfil Académico y Personal</h2>
+                <p>
+                    Apasionado por las ciencias computacionales, el análisis de datos y la ingeniería de software.
+                    Actualmente me enfoco en el desarrollo de aplicaciones web responsivas, la gestión de bases de datos
+                    y la implementación de soluciones tecnológicas estructuradas.
+                </p>
+            </section>
+
+            <section id="experiencia" class="card-section">
+                <h2>Proyectos y Experiencia</h2>
+                <p>
+                    He participado en proyectos de desarrollo web front-end utilizando HTML5, CSS3 y JavaScript, así
+                    como en aplicaciones en Java con conectividad a bases de datos y scripts de análisis técnico en
+                    Python.
+                </p>
+            </section>
+
+            <section id="habilidades" class="card-section">
+                <h2>Habilidades Técnicas</h2>
+                <p>
+                    Dominio en Maquetación Web (HTML/CSS), Programación Orientada a Objetos (Java, Python), Manejo de
+                    Sistemas de Control de Versiones (Git & GitHub) y Diseño de Estructuras de Datos.
+                </p>
+            </section>
+        </main>
+
+        <!-- Barra Lateral -->
+        <aside>
+            <div class="widget">
+                <h3>Datos Rápidos</h3>
+                <ul>
+                    <li><strong>Ubicación:</strong> Ecuador</li>
+                    <li><strong>Área:</strong> Programación Web</li>
+                    <li><strong>Estado:</strong> Estudiante</li>
+                </ul>
+            </div>
+
+            <div id="contacto" class="widget">
+                <h3>Contacto Rápido</h3>
+                <ul>
+                    <li>GitHub: github.com</li>
+                    <li>LinkedIn: linkedin.com</li>
+                </ul>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- Pie de Página -->
+    <footer>
+        <p>&copy; 2026 Andres Moises Calle Acosta - Todos los derechos reservados.</p>
+        <a href="index.html" class="btn-back">&larr; Volver al Menú Principal</a>
+    </footer>
+
+</body>
+
+</html>
